@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	RewriteBase /
@@ -16,3 +17,9 @@
 Header set Access-Control-Allow-Origin "*"
 Header set Access-Control-Allow-Method POST,GET,OPTIONS
 Header set Access-Control-Allow-Headers Content-Type,Accept
+=======
+Options -MultiViews
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ ui/index.html [QSA,L]
+>>>>>>> 58f9e8b7d0cdd213147ff25b7f59a83cd48eb314
