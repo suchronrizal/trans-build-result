@@ -1,25 +1,7 @@
-<<<<<<< HEAD
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-	RewriteBase /
-	RewriteRule ^index\.php$ - [L]
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule . /ui/index.php [L]
-	RewriteCond %{HTTPS}  !=on
-        RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L] 
-
-</IfModule>
-
-#<IfModule mod_headers.c>
-#	Header set Access-Control-Allow-Origin: "*"
-#</IfModule>
-Header set Access-Control-Allow-Origin "*"
-Header set Access-Control-Allow-Method POST,GET,OPTIONS
-Header set Access-Control-Allow-Headers Content-Type,Accept
-=======
-Options -MultiViews
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ ui/index.html [QSA,L]
->>>>>>> 58f9e8b7d0cdd213147ff25b7f59a83cd48eb314
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+RewriteRule ^ - [L]
+
+# Fallback all other routes to index.html
+RewriteRule ^ /index.html [L]
